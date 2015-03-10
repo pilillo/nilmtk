@@ -37,7 +37,7 @@ def convert_greend(greend_path, hdf_filename):
                 import StringIO as sio
                 tmp_pandas = pd.DataFrame.from_csv(sio.StringIO(__preprocess_file(abs_house, date)))
                 
-            tmp_pandas = tmp_pandas[tmp_pandas.index != 'timestamp']
+            if type(tmp_pandas.index == 'timestamp') is 'numpy.ndarray': tmp_pandas = tmp_pandas[tmp_pandas.index != 'timestamp']
             tmp_pandas = tmp_pandas.sort_index()
             c = 0 
             tmp_pandas.index = [__timestamp(t) for t in tmp_pandas.index]
